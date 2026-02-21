@@ -15,6 +15,11 @@ public class Main {
         return min;
     }
 
+
+    public static int[] minMax(int[] arr) {
+        return new int[]{min(arr), max(arr)};
+    }
+
     public static String task7(String str) {
         StringBuilder reversed = new StringBuilder();
         for (int i = str.length() - 1; i >= 0; i--) {
@@ -24,7 +29,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Task 1 - min/max from command line args
+        // Part i - min/max from command line args
         int[] numbers = new int[args.length];
         for (int i = 0; i < args.length; i++) {
             numbers[i] = Integer.parseInt(args[i]);
@@ -32,10 +37,25 @@ public class Main {
         System.out.println("Minimum = " + min(numbers));
         System.out.println("Maximum = " + max(numbers));
 
-        // Task 7 - reverse a string
         Scanner scanner = new Scanner(System.in);
+
+        // min/max from Scanner
+        System.out.print("Enter array size: ");
+        int n = scanner.nextInt();
+        int[] scannedNumbers = new int[n];
+        for (int i = 0; i < n; i++) {
+            scannedNumbers[i] = scanner.nextInt();
+        }
+        int[] result = minMax(scannedNumbers);
+        System.out.println("Minimum = " + result[0]);
+        System.out.println("Maximum = " + result[1]);
+
+        // Task 7 - reverse a string
+        scanner.nextLine(); // consume leftover newline
+        System.out.print("Enter a string to reverse: ");
         String input = scanner.nextLine();
         System.out.println(task7(input));
+
         scanner.close();
     }
 }
